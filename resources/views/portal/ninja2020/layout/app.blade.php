@@ -46,9 +46,9 @@
 
         <!-- Title -->
         @if(isset($company->account) && !$company->account->isPaid())
-            <title>@yield('meta_title', '') â€” {{ config('branding.app_name') }}</title>
+            <title>@yield('meta_title', '') - {{ config('branding.app_name') }}</title>
         @elseif(isset($company) && !is_null($company))
-            <title>@yield('meta_title', '') â€” {{ $company->present()->name() }}</title>
+            <title>@yield('meta_title', '') - {{ $company->present()->name() }}</title>
         @else
             <title>@yield('meta_title', '')</title>
         @endif
@@ -187,4 +187,9 @@
         </script>
     @endif
 </html>
+
+
+
+
+
 

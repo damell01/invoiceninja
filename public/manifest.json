@@ -11,7 +11,7 @@
     "related_applications": [
         {
             "platform": "play",
-            "id": "com.invoiceninja.app"
+            "id": "com.dbell.billing"
         }, {
             "platform": "itunes",
             "url": "https://testflight.apple.com/join/MJ6WpaXh"
