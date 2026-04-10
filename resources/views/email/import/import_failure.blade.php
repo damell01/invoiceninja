@@ -14,7 +14,7 @@
 
     @if(isset($whitelabel) && !$whitelabel)
         @slot('footer')
-            @component('email.components.footer', ['url' => 'https://invoiceninja.com', 'url_text' => '&copy; InvoiceNinja'])
+            @component('email.components.footer', ['url' => config('branding.website_url'), 'url_text' => '&copy; '.config('branding.company_name')])
                 For any info, please visit InvoiceNinja.
             @endcomponent
         @endslot

@@ -1,11 +1,11 @@
 {
-    "name": "Invoice Ninja",
-    "short_name": "Invoice Ninja",
+    "name": "DBell Billing",
+    "short_name": "DBell Billing",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Invoice Clients, Track Work-Time, Get Paid Online.",
+    "description": "DBell Billing helps you invoice clients, track work time, and get paid online.",
     "orientation": "portrait-primary",
     "prefer_related_applications": true,
     "related_applications": [

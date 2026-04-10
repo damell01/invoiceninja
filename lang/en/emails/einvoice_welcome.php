@@ -84,7 +84,7 @@ Need Assistance?
 
 Our support team is ready to help with any questions about e-invoicing requirements or setup.
 
-Contact support: contact@invoiceninja.com
+Contact support: :email
 
 Thank you for choosing our e-invoicing service.
     "

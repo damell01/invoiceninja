@@ -1,7 +1,7 @@
 @component('email.template.master', ['design' => 'light'])
 
 @slot('header')
-    @component('email.components.header', ['p' => 'Your upgrade has completed!', 'logo' => 'https://www.invoiceninja.com/wp-content/uploads/2019/01/InvoiceNinja-Logo-Round-300x300.png'])
+    @component('email.components.header', ['p' => 'Your upgrade has completed!', 'logo' => asset(config('branding.logo_light'))])
         Upgrade!
     @endcomponent
 
@@ -13,7 +13,7 @@
 
 Hello, this is really tiny template. We just want to inform you that upgrade has been completed.
 
-@component('email.components.button', ['url' => 'https://invoiceninja.com', 'show_link' => true])
+    @component('email.components.button', ['url' => config('branding.website_url'), 'show_link' => true])
     Visit InvoiceNinja
 @endcomponent
 
@@ -25,11 +25,11 @@ Hello, this is really tiny template. We just want to inform you that upgrade has
 @endcomponent
 
 @slot('signature')
-    Benjamin, InvoiceNinja (ben@invoiceninja.com)
+    DBell Creations Support ({{ config('branding.support_email') }})
 @endslot
 
 @slot('footer')
-    @component('email.components.footer', ['url' => 'https://invoiceninja.com', 'url_text' => '&copy; InvoiceNinja'])
+    @component('email.components.footer', ['url' => config('branding.website_url'), 'url_text' => '&copy; '.config('branding.company_name')])
         For any info, please visit InvoiceNinja.
     @endcomponent
 @endslot

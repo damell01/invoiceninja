@@ -2,17 +2,17 @@
 
 return [
 
-    'web_url' => 'https://www.invoiceninja.com',
+    'web_url' => env('BRAND_WEBSITE_URL', 'https://billing.dbellcreations.com'),
     'admin_token' => env('NINJA_ADMIN_TOKEN', ''),
-    'license_url' => 'https://app.invoiceninja.com',
+    'license_url' => env('BRAND_WEBSITE_URL', 'https://billing.dbellcreations.com'),
     'react_url' => env('REACT_URL', env('APP_URL', '')),
     'production' => env('NINJA_PROD', false),
     'license' => env('NINJA_LICENSE', ''),
     'version_url' => 'https://pdf.invoicing.co/api/version',
-    'app_name' => env('APP_NAME', 'Invoice Ninja'),
+    'app_name' => env('APP_NAME', 'DBell Billing'),
     'app_env' => env('APP_ENV', 'selfhosted'),
-    'app_logo' => env('APP_LOGO', 'https://invoicing.co/images/new_logo.png'),
-    'ninja_client_portal' => env('NINJA_CLIENT_PORTAL', 'https://invoiceninja.invoicing.co'),
+    'app_logo' => env('APP_LOGO', env('BRAND_APP_LOGO', env('APP_URL', 'https://billing.dbellcreations.com').'/images/new_logo.png')),
+    'ninja_client_portal' => env('NINJA_CLIENT_PORTAL', env('APP_URL', 'https://billing.dbellcreations.com')),
     'debug_enabled' => env('APP_DEBUG', false),
     'require_https' => env('REQUIRE_HTTPS', true),
     'app_url' => rtrim(env('APP_URL', ''), '/'),
@@ -46,19 +46,19 @@ return [
     'preconfigured_install' => env('PRECONFIGURED_INSTALL', false),
     'update_secret' => env('UPDATE_SECRET', ''),
     'license_key' => env('LICENSE_KEY', false),
-    'hosted_ninja_url' => env('HOSTED_NINJA_URL', 'https://invoicing.co'),
+    'hosted_ninja_url' => env('HOSTED_NINJA_URL', env('APP_URL', 'https://billing.dbellcreations.com')),
     // Settings used by invoiceninja.com
     'disks' => [
         'backup' => env('BACKUP_DISK', 's3'),
         'document' => env('DOCUMENT_DISK', 's3'),
     ],
     'terms_of_service_url' => [
-        'hosted' => env('TERMS_OF_SERVICE_URL', 'https://www.invoiceninja.com/terms/'),
-        'selfhost' => env('TERMS_OF_SERVICE_URL', 'https://www.invoiceninja.com/self-hosting-terms-service/'),
+        'hosted' => env('TERMS_OF_SERVICE_URL', env('BRAND_TERMS_URL', env('APP_URL', 'https://billing.dbellcreations.com').'/terms')),
+        'selfhost' => env('TERMS_OF_SERVICE_URL', env('BRAND_TERMS_URL', env('APP_URL', 'https://billing.dbellcreations.com').'/terms')),
     ],
     'privacy_policy_url' => [
-        'hosted' => env('PRIVACY_POLICY_URL', 'https://www.invoiceninja.com/privacy-policy/'),
-        'selfhost' => env('PRIVACY_POLICY_URL', 'https://www.invoiceninja.com/self-hosting-privacy-data-control/'),
+        'hosted' => env('PRIVACY_POLICY_URL', env('BRAND_PRIVACY_URL', env('APP_URL', 'https://billing.dbellcreations.com').'/privacy')),
+        'selfhost' => env('PRIVACY_POLICY_URL', env('BRAND_PRIVACY_URL', env('APP_URL', 'https://billing.dbellcreations.com').'/privacy')),
     ],
     'db' => [
         'multi_db_enabled' => env('MULTI_DB_ENABLED', false),
@@ -102,7 +102,7 @@ return [
     'contact' => [
         'email' => env('MAIL_FROM_ADDRESS'),
         'from_name' => env('MAIL_FROM_NAME'),
-        'ninja_official_contact' => env('NINJA_OFFICIAL_CONTACT', 'contact@invoiceninja.com'),
+        'ninja_official_contact' => env('NINJA_OFFICIAL_CONTACT', env('BRAND_SUPPORT_EMAIL', env('MAIL_FROM_ADDRESS', 'support@dbellcreations.com'))),
     ],
     'cached_tables' => [
         'banks' => App\Models\Bank::class,

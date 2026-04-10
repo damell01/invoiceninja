@@ -1,7 +1,7 @@
 <footer class="app-footer">
     <div class="ml-auto">
-        <span>Powered by</span>
-        <a href="https://invoiceninja.com">InvoiceNinja</a>  &copy; 2021 Invoice Ninja LLC.
+        <span>{{ config('branding.footer_text') }}</span>
+        <a href="{{ config('branding.website_url') }}">{{ config('branding.footer_link_text') }}</a>
     </div>
 </footer>
 

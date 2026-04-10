@@ -29,7 +29,7 @@ class EmailBlackListRule implements ValidationRule
     {
 
         if (in_array($value, $this->blacklist)) {
-            $fail('This email address is blacklisted, if you think this is in error, please email contact@invoiceninja.com');
+            $fail('This email address is blacklisted, if you think this is in error, please email '.config('branding.support_email'));
         }
 
     }

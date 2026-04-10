@@ -8,13 +8,13 @@
 
         <div class="grid grid-cols-12 px-6">
             <div class="col-span-12 md:col-start-4 md:col-span-6 mt-4 md:mt-10">
-                <h1 class="text-center text-2xl font-semibold">Invoice Ninja Setup</h1>
+                <h1 class="text-center text-2xl font-semibold">{{ config('branding.app_name') }} Setup</h1>
                 <p class="text-sm text-center">{{ ctrans('texts.if_you_need_help') }}
                     <a 
                         target="_blank" 
-                        href="https://forum.invoiceninja.com" 
+                        href="{{ config('branding.support_url') }}" 
                         class="button-link underline">
-                        {{ ctrans('texts.support_forum') }}
+                        {{ config('branding.company_name') }} Support
                     </a>
                 </p>
 
@@ -62,7 +62,7 @@
                                 <label for="terms_of_service">
                                     <input type="checkbox" class="form-checkbox mr-2" name="terms_of_service" id="terms_of_service" required>
                                     <span>{{ ctrans('texts.i_agree') }}
-                                        <a class="button-link text-blue-600" target="_blank" href="https://www.invoiceninja.com/self-hosting-terms-service/">{{ ctrans('texts.terms_of_service') }}</a>
+                                        <a class="button-link text-blue-600" target="_blank" href="{{ config('branding.terms_url') }}">{{ ctrans('texts.terms_of_service') }}</a>
                                     </span>
                                 </label>
                             </div>
@@ -70,7 +70,7 @@
                                 <label for="privacy_policy">
                                     <input type="checkbox" class="form-checkbox mr-2" name="privacy_policy" id="privacy_policy" required>
                                     <span>{{ ctrans('texts.i_agree') }}
-                                        <a class="button-link text-blue-600" target="_blank" href="https://www.invoiceninja.com/self-hosting-privacy-data-control/">{{ ctrans('texts.privacy_policy') }}</a>
+                                        <a class="button-link text-blue-600" target="_blank" href="{{ config('branding.privacy_url') }}">{{ ctrans('texts.privacy_policy') }}</a>
                                     </span>
                                 </label>
                             </div>

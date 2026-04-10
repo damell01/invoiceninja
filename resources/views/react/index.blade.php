@@ -19,9 +19,9 @@
 
 <!--
 
-If you are reading this, there is a fair change that the react application has not loaded for you. There are a couple of solutions:
+If you are reading this, there is a fair chance that the web application has not loaded for you. There are a couple of solutions:
 
-1. Download the release file from https://github.com/invoiceninja/invoiceninja and overwrite your current installation.
+1. Contact support to obtain the latest release package and overwrite your current installation.
 2. Switch back to the Flutter application by editing the database, you can do this with the following SQL
 
 UPDATE accounts SET

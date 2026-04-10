@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteRule "^\.env" - [F,L]
+    RewriteRule "^dbellbilling/(.*\.env.*)$" - [F,L]
+    RewriteRule "^dbellbilling/storage/(.*)$" - [F,L]
+
+    RewriteCond %{REQUEST_URI} !^/dbellbilling/public/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ dbellbilling/public/$1 [L]
+</IfModule>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
@@ -55,9 +55,9 @@
 
         <!-- Title -->
         @if(isset($account) && !$account->isPaid())
-            <title>@yield('meta_title', '') — Invoice Ninja</title>
+            <title>@yield('meta_title', '') Ã¢â‚¬â€ {{ config('branding.app_name') }}</title>
         @elseif(isset($company) && !is_null($company))
-            <title>@yield('meta_title', '') — {{ $company->present()->name() }}</title>
+            <title>@yield('meta_title', '') Ã¢â‚¬â€ {{ $company->present()->name() }}</title>
         @else
             <title>@yield('meta_title', '')</title>
         @endif
@@ -153,3 +153,5 @@
     </footer>
 
 </html>
+
+

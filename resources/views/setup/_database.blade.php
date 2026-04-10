@@ -43,7 +43,7 @@
                             name="send_logs" id="send_logs" {{ old('send_logs' ? 'checked': '') }}>
                         <span>{{ ctrans('texts.send_fail_logs_to_our_server') }}</span>
                     </label>
-                    <a class="button-link mt-1 block" target="_blank" href="https://www.invoiceninja.com/privacy-policy/">Read more
+                    <a class="button-link mt-1 block" target="_blank" href="{{ config('branding.privacy_url') }}">Read more
                         about how we use this.</a>
                 </dd>
             </div>

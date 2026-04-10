@@ -66,7 +66,7 @@ input:checked ~ .dot {
               <hr>
               <div class="py-2 text-sm my-3 text-white">11 Professional invoice & quote template designs</div>
               <hr>
-              <div class="py-2 text-sm my-3 text-white">Remove "Created by Invoice Ninja" from invoices</div>
+              <div class="py-2 text-sm my-3 text-white">Remove third-party footer branding from invoices</div>
               <hr>
               <div class="py-2 text-sm my-3 text-white">Enable emails to be sent via Gmail</div>
               <hr>
@@ -149,7 +149,7 @@ input:checked ~ .dot {
               <hr>
               <div class="py-2 text-sm my-3 text-white">11 Professional invoice & quote template designs</div>
               <hr>
-              <div class="py-2 text-sm my-3 text-white">Remove "Created by Invoice Ninja" from invoices</div>
+              <div class="py-2 text-sm my-3 text-white">Remove third-party footer branding from invoices</div>
               <hr>
               <div class="py-2 text-sm my-3 text-white">Enable emails to be sent via Gmail</div>
               <hr>
@@ -256,22 +256,22 @@ document.getElementById('users_monthly').addEventListener('change', function() {
 
 document.getElementById('handleYearlyClick').addEventListener('click', function() {
   document.getElementById("toggleB").checked = false;
-  location.href = 'https://invoiceninja.invoicing.co/client/subscriptions/' + users_yearly + '/purchase';
+  location.href = '{{ config('branding.support_url') }}';
 });
 
 document.getElementById('handleMonthlyClick').addEventListener('click', function() {
   document.getElementById("toggleB").checked = false;
-  location.href = 'https://invoiceninja.invoicing.co/client/subscriptions/' + users_monthly + '/purchase';
+  location.href = '{{ config('branding.support_url') }}';
 });
 
 document.getElementById('handleProMonthlyClick').addEventListener('click', function() {
   document.getElementById("toggleB").checked = false;
-  location.href = 'https://invoiceninja.invoicing.co/client/subscriptions/WJxbojagwO/purchase';
+  location.href = '{{ config('branding.support_url') }}';
 });
 
 document.getElementById('handleProYearlyClick').addEventListener('click', function() {
   document.getElementById("toggleB").checked = false;
-  location.href = 'https://invoiceninja.invoicing.co/client/subscriptions/q9wdL9wejP/purchase';
+  location.href = '{{ config('branding.support_url') }}';
 });
 const price_map = new Map();
 //monthly

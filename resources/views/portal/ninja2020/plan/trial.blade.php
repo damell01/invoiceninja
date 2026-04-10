@@ -1581,7 +1581,7 @@ Ensure the default browser behavior of the `hidden` attribute.
                 </h2>
                 <ul class="list-checkmark relative z-10">
                     <li class="mb-[5px]">Unlimited Clients & Invoices & Quotes</li>
-                    <li class="mb-[5px]">Remove "Created by Invoice Ninja"</li>
+                    <li class="mb-[5px]">Remove third-party footer branding</li>
                     <li class="mb-[5px]">Send Invoice Emails via Gmail or MSN Accounts</li>
                     <li class="mb-[5px]">11 Professional Invoice & Quote Template Designs</li>
                     <li class="mb-[5px]">Branded URL Option: "YourBrand".Invoicing.co"</li>
@@ -1640,7 +1640,7 @@ Ensure the default browser behavior of the `hidden` attribute.
                             <h5 class="text-base font-bold leading-[1.36em] text-primary-dark uppercase mb-4">All Free Features +</h5>
                             <ul class="list-checkmark list-checkmark_green relative z-10">
                               <li class="mb-[5px]">Unlimited Clients & Invoices</li>
-                              <li class="mb-[5px]">Remove "Created by Invoice Ninja"</li>
+                              <li class="mb-[5px]">Remove third-party footer branding</li>
                               <li class="mb-[5px]">Email Invoices via Gmail & MSN</li>
                               <li class="mb-[5px]">Branded URL: 'YourSite".Invoicing.co'</li>
                               <li class="mb-[5px]">11 Professional Invoice Templates</li>
@@ -1736,7 +1736,7 @@ Ensure the default browser behavior of the `hidden` attribute.
                             <h5 class="text-base font-bold leading-[1.36em] text-primary-dark uppercase mb-4">All Free Features +</h5>
                             <ul class="list-checkmark list-checkmark_green relative z-10">
                               <li class="mb-[5px]">Unlimited Clients & Invoices</li>
-                              <li class="mb-[5px]">Remove "Created by Invoice Ninja"</li>
+                              <li class="mb-[5px]">Remove third-party footer branding</li>
                               <li class="mb-[5px]">Email Invoices via Gmail & MSN</li>
                               <li class="mb-[5px]">Branded URL: 'YourSite".Invoicing.co'</li>
                               <li class="mb-[5px]">11 Professional Invoice Templates</li>
@@ -1962,22 +1962,22 @@ document.getElementById('users_monthly').addEventListener('change', function() {
 
 document.getElementById('handleYearlyClick').addEventListener('click', function() {
   document.getElementById("large-toggle").checked = false;
-  location.href = 'https://invoiceninja.invoicing.co/client/subscriptions/' + users_yearly + '/purchase';
+  location.href = '{{ config('branding.support_url') }}';
 });
 
 document.getElementById('handleMonthlyClick').addEventListener('click', function() {
   document.getElementById("large-toggle").checked = false;
-  location.href = 'https://invoiceninja.invoicing.co/client/subscriptions/' + users_monthly + '/purchase';
+  location.href = '{{ config('branding.support_url') }}';
 });
 
 document.getElementById('handleProMonthlyClick').addEventListener('click', function() {
   document.getElementById("large-toggle").checked = false;
-  location.href = 'https://invoiceninja.invoicing.co/client/subscriptions/WJxbojagwO/purchase';
+  location.href = '{{ config('branding.support_url') }}';
 });
 
 document.getElementById('handleProYearlyClick').addEventListener('click', function() {
   document.getElementById("large-toggle").checked = false;
-  location.href = 'https://invoiceninja.invoicing.co/client/subscriptions/q9wdL9wejP/purchase';
+  location.href = '{{ config('branding.support_url') }}';
 });
 const price_map = new Map();
 //monthly

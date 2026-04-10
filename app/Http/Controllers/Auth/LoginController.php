@@ -669,7 +669,7 @@ class LoginController extends BaseController
                 return $this->createNewAccount($new_account);
             }
 
-            return response()->json(['message' => 'User not found. If you believe this is an error, please send an email to contact@invoiceninja.com'], 400);
+            return response()->json(['message' => 'User not found. If you believe this is an error, please send an email to '.config('branding.support_email')], 400);
         }
 
 
@@ -791,7 +791,7 @@ class LoginController extends BaseController
                 return $this->createNewAccount($new_account);
             }
 
-            return response()->json(['message' => 'User not found. If you believe this is an error, please send an email to contact@invoiceninja.com'], 400);
+            return response()->json(['message' => 'User not found. If you believe this is an error, please send an email to '.config('branding.support_email')], 400);
         }
 
         return response()
