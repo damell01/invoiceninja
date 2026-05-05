@@ -245,6 +245,7 @@ Optional update flags:
 - If your repo is private and you want the easiest first deploy, copy the repo to the VPS and run the install script there. If you want easier updates later, use an SSH deploy key. See [docs/private-repo-deploy.md](docs/private-repo-deploy.md).
 - Payment gateways are configured in the app UI at `/#/settings/company_gateways`.
 - Contracts admin now includes a gateway readiness card and an AI connection test button.
+- AI is intended to run only on background jobs and is now separated onto its own `ai` queue by default so slow model calls do not block normal app work.
 - The built-in web UI at `/setup` helps configure the application once the app is already bootable, but it does not install system packages, Composer dependencies, npm packages, or Docker services for you.
 - Contracts reuse Invoice Ninja's normal payment gateway system, so this stays compatible with Stripe and other supported gateways instead of creating a second payment stack.
 - Offline payments like check, cash, wire, or external POS can still be tracked as normal Invoice Ninja payments.

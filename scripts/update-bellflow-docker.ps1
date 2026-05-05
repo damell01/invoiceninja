@@ -54,8 +54,8 @@ if (-not $SkipHealth) {
 }
 
 if ($Logs) {
-    Write-Host "Following app and queue logs..."
-    docker compose -f $ComposeFile logs -f app queue
+    Write-Host "Following app, queue, and ai-queue logs..."
+    docker compose -f $ComposeFile logs -f app queue ai-queue
 }
 
 Write-Host "Bellflow Docker update complete."

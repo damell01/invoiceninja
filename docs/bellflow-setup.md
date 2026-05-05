@@ -30,6 +30,13 @@ After install, the remaining business setup is mostly done in the app UI:
 - company branding and settings: the normal Bellflow / Invoice Ninja settings UI
 - AI connection verification: the Contracts admin page now includes a Qwen connection test button
 
+Important AI performance note:
+
+- AI is designed to stay in background jobs only
+- keep AI on its own queue such as `ai`
+- do not use `QUEUE_CONNECTION=sync` in production if AI is enabled
+- run a dedicated worker for the `ai` queue so slow model calls do not block normal app jobs
+
 ## What This Setup Includes
 
 - Bellflow branding defaults
@@ -146,10 +153,10 @@ AI_API_KEY=
 AI_MODEL=qwen
 AI_TIMEOUT=120
 AI_CONNECT_TIMEOUT=10
-AI_QUEUE=default
+AI_QUEUE=ai
 
 CONTRACTS_AI_ENABLED=true
-CONTRACTS_AI_QUEUE=default
+CONTRACTS_AI_QUEUE=ai
 CONTRACTS_AI_DEFAULT_ACTION=summarize
 ```
 
@@ -175,6 +182,7 @@ npm run build
 
 ```bash
 php artisan queue:work --queue=default
+php artisan queue:work --queue=ai --tries=1 --timeout=180
 ```
 
 ## Docker Setup
@@ -204,10 +212,10 @@ These scripts:
 
 - create `.env` if missing
 - build the Bellflow app image
-- start app, queue, db, and redis services
+- start app, queue, ai-queue, db, and redis services
 - run migrations unless you skip them
 - run the Bellflow health check unless you skip it
-- optionally follow app and queue logs
+- optionally follow app, queue, and ai-queue logs
 
 Optional flags:
 
@@ -255,6 +263,7 @@ Recommended Docker flow:
 3. Place your final logo files in `public/images/`
 4. Build the app image
 5. Start app, queue, db, and redis services
+5. Start app, queue, ai-queue, db, and redis services
 6. Run migrations inside the app container
 7. Build frontend assets during the image build
 

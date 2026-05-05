@@ -79,8 +79,8 @@ else
 fi
 
 if [[ "$FOLLOW_LOGS" -eq 1 ]]; then
-  echo "Following app and queue logs..."
-  docker compose -f "$COMPOSE_FILE" logs -f app queue
+  echo "Following app, queue, and ai-queue logs..."
+  docker compose -f "$COMPOSE_FILE" logs -f app queue ai-queue
 fi
 
 echo "Bellflow Docker update complete."

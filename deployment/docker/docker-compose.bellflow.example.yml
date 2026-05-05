@@ -21,7 +21,21 @@ services:
     container_name: bellflow-queue
     env_file:
       - ../../.env
-    command: php artisan queue:work --queue=default --sleep=3 --tries=2
+    command: php artisan queue:work --queue=default --sleep=3 --tries=2 --timeout=90
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - bellflow-storage:/var/www/app/storage
+
+  ai-queue:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Bellflow.Dockerfile
+    container_name: bellflow-ai-queue
+    env_file:
+      - ../../.env
+    command: php artisan queue:work --queue=ai --sleep=3 --tries=1 --timeout=180
     depends_on:
       - db
       - redis
