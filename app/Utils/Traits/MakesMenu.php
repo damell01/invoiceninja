@@ -12,6 +12,7 @@
 
 namespace App\Utils\Traits;
 
+use App\Support\Bellflow\ModuleVisibility;
 use Nwidart\Modules\Facades\Module;
 
 /**
@@ -29,9 +30,13 @@ trait MakesMenu
         $tabs = [];
 
         foreach (Module::getCached() as $module) {
+            $alias = $module['alias'] ?? null;
+
             if (! $module['sidebar']
                 && $module['active'] == 1
-                && in_array(strtolower(class_basename($entity)), $module['views'])) {
+                && in_array(strtolower(class_basename($entity)), $module['views'])
+                && $alias
+                && ModuleVisibility::isModuleVisible($alias)) {
                 $tabs[] = $module;
             }
         }

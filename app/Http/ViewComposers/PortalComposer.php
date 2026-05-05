@@ -12,10 +12,13 @@
 
 namespace App\Http\ViewComposers;
 
+use App\Support\Bellflow\ModuleVisibility;
 use App\Utils\Ninja;
 use App\Utils\TranslationHelper;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
+use Nwidart\Modules\Facades\Module;
 
 /**
  * Class PortalComposer.
@@ -148,6 +151,44 @@ class PortalComposer
             $data[] = ['title' => ctrans('texts.pre_payment'), 'url' => 'client.pre_payments.index', 'icon' => 'dollar-sign', 'id' => 'pre_payment'];
         }
 
-        return $data;
+        return ModuleVisibility::filterPortalItems(array_merge($data, $this->moduleSidebarItems()));
+    }
+
+    private function moduleSidebarItems(): array
+    {
+        $items = [];
+
+        foreach (Module::getCached() as $module) {
+            $views = $module['views'] ?? [];
+
+            if (($module['active'] ?? 0) != 1 || ! ($module['sidebar'] ?? false) || ! in_array('client', $views, true)) {
+                continue;
+            }
+
+            $alias = $module['alias'] ?? null;
+
+            if (! $alias || ! ModuleVisibility::isModuleVisible($alias)) {
+                continue;
+            }
+
+            if ($alias === 'contracts' && ! ModuleVisibility::canShowContractsPortalMenu(auth()->guard('contact')->user())) {
+                continue;
+            }
+
+            $routeName = "client.{$alias}.index";
+
+            if (! Route::has($routeName)) {
+                continue;
+            }
+
+            $items[] = [
+                'title' => __($module['name'] ?? ucfirst($alias)),
+                'url' => $routeName,
+                'icon' => $module['icon'] ?? 'file',
+                'id' => $alias,
+            ];
+        }
+
+        return $items;
     }
 }

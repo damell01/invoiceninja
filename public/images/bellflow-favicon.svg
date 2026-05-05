@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="bellflowFaviconTitle">
+  <title id="bellflowFaviconTitle">Bellflow favicon</title>
+  <defs>
+    <linearGradient id="favBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#23a8ff"/>
+      <stop offset="100%" stop-color="#0077d9"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#f8fbff"/>
+  <path d="M62 20c-18 0-33 15-33 33v12c0 7-2 13-6 18l-7 9c-3 4 0 10 5 10h82c5 0 8-6 5-10l-7-9c-4-5-6-11-6-18V53c0-18-15-33-33-33z" fill="url(#favBlue)"/>
+  <path d="M47 92h30c0 10-7 18-15 18s-15-8-15-18z" fill="url(#favBlue)"/>
+  <circle cx="62" cy="20" r="8" fill="#ffffff"/>
+  <circle cx="62" cy="20" r="4.5" fill="url(#favBlue)"/>
+  <path d="M80 38h18l9-9" fill="none" stroke="url(#favBlue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+  <circle cx="113" cy="29" r="6" fill="none" stroke="url(#favBlue)" stroke-width="5"/>
+  <path d="M82 61h25l8-8" fill="none" stroke="url(#favBlue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+  <circle cx="118" cy="53" r="6" fill="none" stroke="url(#favBlue)" stroke-width="5"/>
+</svg>

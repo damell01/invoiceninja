@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'DBell Billing'),
+    'name' => env('APP_NAME', 'Bellflow'),
 
     /*
     |--------------------------------------------------------------------------

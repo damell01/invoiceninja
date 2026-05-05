@@ -1,0 +1,52 @@
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Bellflow.Dockerfile
+    container_name: bellflow-app
+    env_file:
+      - ../../.env
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - bellflow-storage:/var/www/app/storage
+
+  queue:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Bellflow.Dockerfile
+    container_name: bellflow-queue
+    env_file:
+      - ../../.env
+    command: php artisan queue:work --queue=default --sleep=3 --tries=2
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - bellflow-storage:/var/www/app/storage
+
+  db:
+    image: mysql:8.0
+    container_name: bellflow-db
+    environment:
+      MYSQL_DATABASE: ninja
+      MYSQL_USER: ninja
+      MYSQL_PASSWORD: ninja
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - bellflow-db:/var/lib/mysql
+
+  redis:
+    image: redis:7-alpine
+    container_name: bellflow-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  bellflow-db:
+  bellflow-storage:

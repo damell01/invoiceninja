@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 180" role="img" aria-labelledby="bellflowLogoTitle bellflowLogoDesc">
+  <title id="bellflowLogoTitle">Bellflow logo</title>
+  <desc id="bellflowLogoDesc">Blue bell icon with signal lines and the Bellflow wordmark.</desc>
+  <defs>
+    <linearGradient id="bellflowBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#23a8ff"/>
+      <stop offset="100%" stop-color="#0077d9"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(20 18)">
+    <path d="M126 18c-34 0-62 28-62 62v23c0 13-4 25-12 35l-12 16c-6 8 0 19 10 19h152c10 0 16-11 10-19l-12-16c-8-10-12-22-12-35V80c0-34-28-62-62-62z" fill="url(#bellflowBlue)"/>
+    <path d="M98 158h56c0 16-13 29-28 29s-28-13-28-29z" fill="url(#bellflowBlue)"/>
+    <circle cx="126" cy="18" r="14" fill="#ffffff"/>
+    <circle cx="126" cy="18" r="8" fill="url(#bellflowBlue)"/>
+    <path d="M88 48c-18 14-28 37-28 60" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="8" opacity="0.75"/>
+    <path d="M206 55h72l18-18h54" fill="none" stroke="url(#bellflowBlue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    <circle cx="350" cy="37" r="12" fill="none" stroke="url(#bellflowBlue)" stroke-width="10"/>
+    <path d="M214 94h88l18-18h86" fill="none" stroke="url(#bellflowBlue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    <circle cx="406" cy="76" r="12" fill="none" stroke="url(#bellflowBlue)" stroke-width="10"/>
+    <path d="M222 134h64l18-18h52" fill="none" stroke="url(#bellflowBlue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    <circle cx="372" cy="116" r="12" fill="none" stroke="url(#bellflowBlue)" stroke-width="10"/>
+  </g>
+  <g transform="translate(440 42)">
+    <text x="0" y="72" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="74" font-weight="800" fill="#111827">Bell</text>
+    <text x="145" y="72" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="74" font-weight="700" fill="url(#bellflowBlue)">flow</text>
+  </g>
+</svg>

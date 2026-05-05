@@ -25,9 +25,7 @@
     <meta charset="utf-8">
     <title>@yield('meta_title', config('branding.browser_title')) | {{ config('app.name') }}</title>
     <meta name="description" content="@yield('meta_description')"/>
-    @if(auth()->guard('contact')->user() && !auth()->guard('contact')->user()->user->account->isPaid())
-        <link href="{{ asset('favicon.png') }}" rel="shortcut icon" type="image/png">
-    @endif
+    <link href="{{ asset(config('branding.favicon')) }}" rel="icon" type="image/svg+xml">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">

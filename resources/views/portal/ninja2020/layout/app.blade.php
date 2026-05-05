@@ -78,9 +78,7 @@
         <!-- Styles -->
         @vite('resources/sass/app.scss')
 
-        @if(auth()->guard('contact')->user() && !auth()->guard('contact')->user()->user->account->isPaid())
-            <link href="{{ asset('favicon.png') }}" rel="shortcut icon" type="image/png">
-        @endif
+        <link href="{{ asset(config('branding.favicon')) }}" rel="icon" type="image/svg+xml">
 
         <link rel="canonical" href="{{ config('ninja.site_url') }}/{{ request()->path() }}"/>
 

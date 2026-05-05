@@ -54,6 +54,203 @@ All Pro and Enterprise features from the hosted app are included in the source-a
 * [Elestio](https://elest.io/open-source/invoiceninja)
 * [YunoHost](https://apps.yunohost.org/app/invoiceninja5)
 
+## Bellflow Deployment
+
+This repository also includes a Bellflow-branded deployment path with:
+
+- Bellflow white-label defaults
+- the Contracts module
+- portal contract routes
+- payment schedule to invoice wiring
+- gateway-aware payment method discovery using Invoice Ninja's existing payment stack
+- optional async AI tasks using a self-hosted Qwen-compatible endpoint
+
+If you are deploying Bellflow instead of stock Invoice Ninja, start here and then use the detailed docs:
+
+- [Bellflow setup guide](docs/bellflow-setup.md)
+- [Bellflow verification checklist](docs/bellflow-verification-checklist.md)
+- [Bellflow production deploy checklist](docs/bellflow-deploy-checklist.md)
+- [Private repo deploy options](docs/private-repo-deploy.md)
+
+Useful env templates:
+
+- [`.env.production.example`](.env.production.example) for host / VPS production installs
+- [`.env.docker.example`](.env.docker.example) for Docker installs
+
+### Bellflow VPS / CLI Install
+
+Fastest path for a host install:
+
+```sh
+cp .env.production.example .env
+./scripts/install-bellflow.sh
+```
+
+If you want a one-command Bellflow bootstrap instead of running each step manually, use:
+
+```sh
+./scripts/install-bellflow.sh
+```
+
+On Windows PowerShell:
+
+```powershell
+.\scripts\install-bellflow.ps1
+```
+
+Available script flags:
+
+- `--skip-migrate`
+- `--skip-build`
+- `--with-queue`
+
+1. Clone the repository and enter the project directory.
+
+```sh
+git clone <your-bellflow-repo-url>
+cd invoiceninja
+```
+
+2. Install PHP dependencies.
+
+```sh
+composer install
+```
+
+3. Install frontend dependencies.
+
+```sh
+npm install
+```
+
+4. Create your environment file.
+
+```sh
+cp .env.example .env
+```
+
+5. Update `.env` with your real values:
+
+- `APP_URL`
+- `DB_HOST`
+- `DB_PORT`
+- `DB_DATABASE`
+- `DB_USERNAME`
+- `DB_PASSWORD`
+- mail credentials
+- Bellflow branding values
+- optional AI values
+
+6. Run migrations and clear caches.
+
+```sh
+php artisan migrate --force
+php artisan optimize:clear
+```
+
+7. Build frontend assets.
+
+```sh
+npm run build
+```
+
+8. Run the Bellflow health check.
+
+```sh
+php artisan bellflow:contracts:check
+```
+
+9. If you want AI tasks or other async jobs, run a queue worker.
+
+```sh
+php artisan queue:work --queue=default
+```
+
+### Bellflow Docker Install
+
+Bellflow can also be deployed with Docker.
+
+Fastest path for Docker:
+
+```sh
+cp .env.docker.example .env
+./scripts/install-bellflow-docker.sh
+```
+
+If you want a one-command Docker bootstrap, use:
+
+```sh
+./scripts/install-bellflow-docker.sh
+```
+
+On Windows PowerShell:
+
+```powershell
+.\scripts\install-bellflow-docker.ps1
+```
+
+Available script flags:
+
+- `--skip-migrate`
+- `--skip-health`
+- `--logs`
+
+Included example files:
+
+- [deployment/docker/Bellflow.Dockerfile](deployment/docker/Bellflow.Dockerfile)
+- [deployment/docker/docker-compose.bellflow.example.yml](deployment/docker/docker-compose.bellflow.example.yml)
+
+Recommended flow:
+
+1. Copy `.env.docker.example` to `.env`
+2. Set your real app, database, mail, Redis, branding, and optional AI values
+3. Build the image
+4. Start the app, queue, database, and Redis services
+5. Run migrations inside the app container
+6. Run the Bellflow health check
+
+Example commands:
+
+```sh
+docker compose -f deployment/docker/docker-compose.bellflow.example.yml build
+docker compose -f deployment/docker/docker-compose.bellflow.example.yml up -d
+docker compose -f deployment/docker/docker-compose.bellflow.example.yml exec app php artisan migrate --force
+docker compose -f deployment/docker/docker-compose.bellflow.example.yml exec app php artisan bellflow:contracts:check
+```
+
+For future updates, use:
+
+```sh
+./scripts/update-bellflow-docker.sh
+```
+
+On Windows PowerShell:
+
+```powershell
+.\scripts\update-bellflow-docker.ps1
+```
+
+Optional update flags:
+
+- `--pull`
+- `--skip-migrate`
+- `--skip-health`
+- `--logs`
+
+### Bellflow Notes
+
+- You do not need an SSH key just to build or run Docker locally.
+- You only need SSH if you are connecting to a remote VPS shell, cloning from a private Git repo over SSH, or deploying through a remote Git-based workflow.
+- If your code is already on the VPS, Docker can build it directly from the local folder there with no SSH key inside Docker itself.
+- If your repo is private and you want the easiest first deploy, copy the repo to the VPS and run the install script there. If you want easier updates later, use an SSH deploy key. See [docs/private-repo-deploy.md](docs/private-repo-deploy.md).
+- Payment gateways are configured in the app UI at `/#/settings/company_gateways`.
+- Contracts admin now includes a gateway readiness card and an AI connection test button.
+- The built-in web UI at `/setup` helps configure the application once the app is already bootable, but it does not install system packages, Composer dependencies, npm packages, or Docker services for you.
+- Contracts reuse Invoice Ninja's normal payment gateway system, so this stays compatible with Stripe and other supported gateways instead of creating a second payment stack.
+- Offline payments like check, cash, wire, or external POS can still be tracked as normal Invoice Ninja payments.
+- AI is disabled until you set `AI_ENABLED=true` and provide a working Qwen-compatible endpoint.
+- The current logo asset in `public/images/bellflow-logo.jpg` still visually says `DBellCreations`, so replace it when you have final Bellflow brand assets.
+
 ### Recommended Providers
 * [Stripe](https://stripe.com/)
 * [Postmark](https://postmarkapp.com/)
